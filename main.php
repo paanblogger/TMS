@@ -12,12 +12,12 @@ class Main extends Main_Controller {
 		$user = $this->input->post('log-username');
 		$pass = $this->input->post('log-password');
 		
-		if(!(($user = NULL) && ($pass = NULL)))
+		if(($this->input->post('log-username')) && ($this->input->post('log-password')))
 		{
 			echo $user;
 			echo $pass;
 			//$sql = "SELECT * FROM `user` WHERE `u_username` = \'asip.amn\' AND `u_pass` = \'1\'";
-			$query = $this->db->query("SELECT * FROM user WHERE u_username = \'asip.amn\' AND u_pass = ".$pass.";");
+			$query = $this->db->query("SELECT * FROM user WHERE u_username = ".$user." AND u_pass = ".$pass.";");
 			$row = $query->row();
 			if ($query->num_rows() > 0)
 			{
